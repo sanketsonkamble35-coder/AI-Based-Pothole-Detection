@@ -22,24 +22,6 @@ The application uses a trained YOLO model for image prediction and Flask to prov
 * **OpenCV** — image processing
 * **HTML and CSS** — user interface
 
-## 📁 Project Structure
-PATHOLE/
-│
-├── app.py
-├── best.pt
-├── README.md
-├── .gitignore
-│
-├── templates/
-│   └── index.html
-│
-├── uploads/
-│   └── .gitkeep
-│
-└── outputs/
-    └── .gitkeep
-
-
 **Important:** The trained model file `best.pt` is excluded from this GitHub repository because of the `.gitignore` configuration. You must obtain the model file separately and place it in the project root before running the application.
 
 ## ⚙️ Requirements
