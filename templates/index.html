@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Pothole Detection System</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 28px 15px;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+        }
+
+        header p {
+            margin: 0;
+            color: #cbd5e1;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 40px auto;
+            padding: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .description {
+            text-align: center;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 25px 0;
+            border: 1px dashed #94a3b8;
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .message {
+            margin-top: 25px;
+            padding: 15px;
+            background: #eff6ff;
+            border-radius: 8px;
+            text-align: center;
+            overflow-wrap: anywhere;
+        }
+
+        .result {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .result img {
+            display: block;
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>AI-Based Pothole Detection</h1>
+        <p>Road Image Analysis Using Artificial Intelligence</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+
+            <h2>Upload a Road Image</h2>
+
+            <p class="description">
+                Select an image of a road to analyze it using our
+                AI object detection model.
+            </p>
+
+            <form method="POST" enctype="multipart/form-data">
+                <input
+                    type="file"
+                    name="image"
+                    accept=".jpg,.jpeg,.png,.webp"
+                    required
+                >
+
+                <button type="submit">
+                    Analyze Image
+                </button>
+            </form>
+
+            {% if message %}
+                <div class="message">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+            {% if result_image %}
+                <div class="result">
+                    <h2>Detection Result</h2>
+
+                    <img
+                        src="{{ url_for('show_output', filename=result_image) }}"
+                        alt="AI detection result"
+                    >
+                </div>
+            {% endif %}
+
+        </section>
+    </main>
+
+    <footer>
+        AI-Based Pothole Detection System | Academic Mini Project
+    </footer>
+
+</body>
+</html>
+
+ 
